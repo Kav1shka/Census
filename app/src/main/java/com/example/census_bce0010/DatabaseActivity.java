@@ -7,8 +7,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
-import android.os.Bundle;
+;
 
 public class DatabaseActivity extends SQLiteOpenHelper {
 
@@ -31,7 +30,7 @@ public class DatabaseActivity extends SQLiteOpenHelper {
         onCreate(DB);
     }
 
-    public boolean insertuserdata(String name, String age, String gender, byte[] img){
+    public boolean insertuserdata(String name, String age, String gender,String img){
         SQLiteDatabase DB =  this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name",name);

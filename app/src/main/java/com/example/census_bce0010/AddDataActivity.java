@@ -12,10 +12,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.annotation.Nullable;
+//import android.support.v4.app.ActivityCompat;
+//import android.support.v4.content.ContextCompat;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +38,8 @@ public class AddDataActivity extends AppCompatActivity {
     RadioGroup gender;
 
     DatabaseActivity DB;
+    String img;
+
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,10 +83,6 @@ public class AddDataActivity extends AppCompatActivity {
 //        male = findViewById(R.id.maleBtn);
 //        findGender();
 
-
-
-
-
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +115,7 @@ public class AddDataActivity extends AppCompatActivity {
 //                    Toast.makeText(Addlist.this, genderbutton.getText(), Toast.LENGTH_SHORT).show();
 
 
-                    Boolean checkinsertdata = DB.insertuserdata(nameTXT,ageNUM,genderTXT);
+                    Boolean checkinsertdata = DB.insertuserdata(nameTXT,ageNUM,genderTXT,img);
 
                     if (checkinsertdata == true)
                     {
