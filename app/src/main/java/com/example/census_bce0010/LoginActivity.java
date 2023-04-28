@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
             if(password.equals(editText.getText().toString())){
                 Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
                 startActivity(intent);
-                finish();
             }else {
                 editText.setError("worng password");
                 errorCount++;

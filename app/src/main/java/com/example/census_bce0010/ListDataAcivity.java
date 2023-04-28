@@ -17,6 +17,7 @@ import com.example.census_bce0010.DatabaseActivity;
 import com.example.census_bce0010.MyAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import java.util.ArrayList;
@@ -27,6 +28,8 @@ import java.util.Objects;
 
 public class ListDataAcivity extends AppCompatActivity {
 
+    private FirebaseFirestore firebaseDB = FirebaseFirestore.getInstance();
+
     RecyclerView recyclerView;
 
     ArrayList<String> name,age,gender,img;
@@ -36,6 +39,8 @@ public class ListDataAcivity extends AppCompatActivity {
 
     Button uploadBtn;
     MyAdapter adapter;
+
+
     int[] id;
 
     private static final String TAG = "Data List";
@@ -90,36 +95,38 @@ public class ListDataAcivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Cursor cursor = DB.getdata();
-                if (cursor.getCount()==0) {
+                if (cursor.getCount() == 0) {
                     Toast.makeText(ListDataAcivity.this, "No data entered", Toast.LENGTH_SHORT).show();
                     return;
-                }else{
+                } else {
 
-                    Map<String,Object> data = new HashMap<>();
-                    while (cursor.moveToNext()){
+                    Map<String, Object> data = new HashMap<>();
+                    while (cursor.moveToNext()) {
                         String username = cursor.getString(0);
-                        data.put("Name",cursor.getString(0)+"\n");
-                        data.put("Age",cursor.getString(1)+"\n");
-                        data.put("Gender",cursor.getString(2)+"\n");
-                        data.put("Profile Photo",cursor.getString(3)+"\n");
+                        data.put("Name", cursor.getString(0) + "\n");
+                        data.put("Age", cursor.getString(1) + "\n");
+                        data.put("Gender", cursor.getString(2) + "\n");
+                        data.put("Profile Photo", cursor.getString(3) + "\n");
 
 
-                        //firebaseDB.collection("Cencus APP").document(username).set(data)
-                        // .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        //  @Override
-                        //  public void onSuccess(Void unused) {
-                        //  Toast.makeText(Viewdata.this, "Saved to cloud", Toast.LENGTH_SHORT).show();
-                        //  }
-                        // })
-                        // .addOnFailureListener(new OnFailureListener() {
-                        //    @Override
-                        //    public void onFailure(@NonNull Exception e) {
-                        //     Toast.makeText(Viewdata.this, "Error in saving to cloud!", Toast.LENGTH_SHORT).show();
-                        //    Log.d(TAG,e.toString());
+                        firebaseDB.collection("cencus").document(username).set(data)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(ListDataAcivity.this, "Saved to cloud", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(ListDataAcivity.this, "Error in saving to cloud!", Toast.LENGTH_SHORT).show();
+                                        Log.d(TAG, e.toString());
+                                    }
+                                });
                     }
-                    // });
                 }
             }
         });
+        }
     }
-}
+

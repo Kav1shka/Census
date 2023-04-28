@@ -25,6 +25,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.util.Base64;
 import java.util.Objects;
 
 public class AddDataActivity extends AppCompatActivity {
@@ -38,7 +40,7 @@ public class AddDataActivity extends AppCompatActivity {
     RadioGroup gender;
 
     DatabaseActivity DB;
-    String img;
+    String img,eccodedImage;
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
@@ -107,6 +109,7 @@ public class AddDataActivity extends AppCompatActivity {
                 String nameTXT = name.getText().toString();
                 String ageNUM = age.getText().toString();
                 String genderTXT = genderbutton.getText().toString();
+                String bitmap = img;
                 System.out.println(genderTXT);
 
                 if (selectedId == -1) {
@@ -146,6 +149,10 @@ public class AddDataActivity extends AppCompatActivity {
             assert data != null;
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(bitmap);
+            ByteArrayOutputStream bytearray = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,bytearray);
+            byte[] img = bytearray.toByteArray();
+//            eccodedImage = Base64.encodeToString(img,Base64.DEFAULT);
 
         }
     }
