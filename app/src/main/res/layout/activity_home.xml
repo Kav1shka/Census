@@ -2,23 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/layout"
     tools:context=".HomeActivity">
 
-    <Button
-        android:id="@+id/Add_data"
-        android:layout_width="180dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="24dp"
-        android:text="Add Data"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
 
-
+    <!--    <Button-->
+    <!--        android:id="@+id/Add_data"-->
+    <!--        android:layout_width="180dp"-->
+    <!--        android:layout_height="60dp"-->
+    <!--        android:text="Add Data"-->
+    <!--        tools:layout_editor_absoluteX="109dp"-->
+    <!--        tools:layout_editor_absoluteY="402dp" />-->
 
     <TextView
         android:id="@+id/textView3"
@@ -26,7 +22,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="This App was developed by SPMUKN De Alwis(D-21-BCE-0010)"
-        android:textColor="#121111"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -34,38 +30,27 @@
         app:layout_constraintTop_toBottomOf="parent" />
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="183dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="42dp"
-        android:text="List Data"
+        android:id="@+id/Preferences"
+        android:layout_width="201dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="63dp"
+        android:text="BG Color Change"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        tools:ignore="UnknownId" />
+        app:layout_constraintTop_toBottomOf="@+id/Add_data" />
 
     <Button
-        android:id="@+id/Preferences"
-        android:layout_width="192dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="124dp"
-        android:text="BG Color Change"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        android:id="@+id/Add_data"
+        android:layout_width="188dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="199dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="484dp"
+        android:text="Add List"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Add_data"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="70dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
